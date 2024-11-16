@@ -1,0 +1,80 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 15
+Server version: 8.0.40 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| adventureworks     |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use adventureworks;
+Database changed
+mysql> show tables;
++--------------------------+
+| Tables_in_adventureworks |
++--------------------------+
+| persone                  |
++--------------------------+
+1 row in set (0.00 sec)
+
+mysql> desc persone;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| id        | int          | YES  |     | NULL    |       |
+| lastname  | varchar(255) | YES  |     | NULL    |       |
+| firstname | varchar(255) | YES  |     | NULL    |       |
+| age       | int          | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into persone values ("1","Mohamed","Fares","17");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into persone ("2","Saad","youssef","22");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"2","Saad","youssef","22")' at line 1
+mysql> insert into persone values ("2","saad","youssef","22");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from persone ;
++------+----------+-----------+------+
+| id   | lastname | firstname | age  |
++------+----------+-----------+------+
+|    1 | Mohamed  | Fares     |   17 |
+|    2 | saad     | youssef   |   22 |
++------+----------+-----------+------+
+2 rows in set (0.00 sec)
+
+mysql> insert into persone values ("3","Ziad","Khaled","20");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from persone
+    -> select * from perone ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select * from perone' at line 2
+mysql> select *from persone;
++------+----------+-----------+------+
+| id   | lastname | firstname | age  |
++------+----------+-----------+------+
+|    1 | Mohamed  | Fares     |   17 |
+|    2 | saad     | youssef   |   22 |
+|    3 | Ziad     | Khaled    |   20 |
++------+----------+-----------+------+
+3 rows in set (0.00 sec)
+
+mysql>
